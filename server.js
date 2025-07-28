@@ -132,6 +132,16 @@ const commentSchema = new mongoose.Schema({
 
 const Comment = mongoose.model('Comment', commentSchema);
 
+
+app.get('/dresses', async (req, res) => {
+  try {
+    const all = await Dress.find();
+    res.json(all);
+  } catch (err) {
+    res.status(500).send('Error fetching all dresses');
+  }
+});
+
 // Fetch a single dress
 app.get('/dresses/:id', async (req, res) => {
   try {
